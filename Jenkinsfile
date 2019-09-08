@@ -1,7 +1,9 @@
 pipeline {
-  agent master
+  agent {
+    label "master"
+  }
   stages {
-    stage('Checkout') {
+    stage("Checkout") {
       steps {
         checkout scm
       }
