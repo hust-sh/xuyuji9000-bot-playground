@@ -22,7 +22,6 @@ spec:
       steps {
         container('busybox') {
           sh 'hostname'
-          '
         }
       }
     }
