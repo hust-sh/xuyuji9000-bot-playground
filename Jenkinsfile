@@ -1,9 +1,11 @@
-podTemplate(yaml: """
+pipeline {
+  agent {
+    kubernetes {
+      defaultContainer 'jnlp'
+      yaml """
 apiVersion: v1
 kind: Pod
 metadata:
-  labels:
-    some-label: some-label-value
 spec:
   containers:
   - name: busybox
@@ -12,10 +14,17 @@ spec:
     - cat
     tty: true
 """
-) {
-    node(POD_LABEL) {
-      container('busybox') {
-        sh "hostname"
+    }
+  }
+
+  stages {
+    stage('Run busybox') {
+      steps {
+        container('busybox') {
+          sh 'hostname'
+          '
+        }
       }
     }
+  }
 }
