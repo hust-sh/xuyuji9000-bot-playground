@@ -1,5 +1,5 @@
 podTemplate {
-    node(jenkins:slave) {
+    node(POD_LABEL) {
         stage('Run shell') {
             sh 'echo hello world'
         }
