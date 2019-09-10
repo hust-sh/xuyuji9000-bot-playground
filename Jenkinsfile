@@ -1,12 +1,7 @@
-pipeline {
-  agent {
-    label "master"
-  }
-  stages {
-    stage("Checkout") {
-      steps {
-        checkout scm
-      }
+podTemplate {
+    node(jenkins:slave) {
+        stage('Run shell') {
+            sh 'echo hello world'
+        }
     }
-  }
 }
